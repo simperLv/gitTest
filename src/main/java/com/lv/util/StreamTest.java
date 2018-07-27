@@ -3,7 +3,9 @@ package com.lv.util;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lvsr
@@ -18,8 +20,8 @@ public class StreamTest {
            System.out.print("do not find");
        }*/
         File file = new File("E:\\开题报告");
-        List<String> list = getListFiles("E:\\开题报告", "", true);
-        for (String fileName : list) {
+        List<Map<String,String>> list = getListFiles("E:\\开题报告", "", true);
+        for (Map<String,String> fileName : list) {
             System.out.println(fileName);
         }
         System.out.println(list.size());
@@ -30,15 +32,16 @@ public class StreamTest {
         }
     }
 
-    public static List<String> getListFiles(String path,String suffix,boolean isdepth){
-        List<String> lstFileNames = new ArrayList<String>();
+    public static List<Map<String,String>> getListFiles(String path,String suffix,boolean isdepth){
+        List<Map<String,String>> lstFileNames = new ArrayList<Map<String,String>>();
+        //List<Long> lstFileSizes = new ArrayList<Long>();
         File file = new File(path);
         return StreamTest.listFile(lstFileNames,file,suffix,isdepth);
     }
-    private static List<String> listFile(List<String> lstFileNames,File f,String suffix,boolean isdepth){
+    private static List<Map<String,String>> listFile(List<Map<String,String>> lstFileNames,File f,String suffix,boolean isdepth){
         //若是目录，采用递归的方法遍历子目录
+        File[] t = f.listFiles();
         if(f.isDirectory()){
-            File[] t = f.listFiles();
             for(int i=0;i<t.length;i++){
                 if(isdepth || t[i].isFile()){
                     listFile(lstFileNames,t[i],suffix,isdepth);
@@ -46,20 +49,27 @@ public class StreamTest {
             }
         }else {
             String filePath = f.getAbsolutePath();
+            long fileSize = f.length();
+            Map<String,String> map = new HashMap<String,String>();
+            int begIndex = filePath.lastIndexOf("."); // 最后一个.(即后缀名前面的.)的索引
             if (!suffix.equals("")) {
-                int begIndex = filePath.lastIndexOf("."); // 最后一个.(即后缀名前面的.)的索引
                 String tempsuffix = "";
-
                 if (begIndex != -1) {
                     tempsuffix = filePath.substring(begIndex + 1,
                             filePath.length());
                     if (tempsuffix.equals(suffix)) {
-                        lstFileNames.add(filePath);
+                        String fileSizes = FormetFileSize(fileSize);
+                        String filePaths = filePath.substring(begIndex+1,filePath.length());
+                        map.put(filePaths,fileSizes);
+                        lstFileNames.add(map);
                     }
                 }
 
             }else{
-                lstFileNames.add(filePath);
+                String filePaths = filePath.substring(begIndex+1,filePath.length());
+                String fileSizes = FormetFileSize(fileSize);
+                map.put(filePaths,fileSizes);
+                lstFileNames.add(map);
             }
         }
         return lstFileNames;
