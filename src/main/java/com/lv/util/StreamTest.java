@@ -3,8 +3,10 @@ package com.lv.util;
 import com.lv.model.Person;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 /**
  * Created by simperLv
@@ -22,6 +24,14 @@ public class StreamTest {
 
         Predicate<Person> pred = (p) -> p.getAge() > 22;
         displayPeople(people,pred);
+
+        Person[] students = {
+                new Person("小吕",22),
+                new Person("狗",23),
+                new Person("岳二",21)};
+        //Stream<Person> stream = Stream.of(students);
+        Stream<Person> stream = Arrays.stream(students);
+        stream.forEach(s -> System.out.println(s.getInfo()));
     }
     public static void displayPeople(List<Person> people,Predicate<Person> pred){
         System.out.print("selected:");
