@@ -1,11 +1,9 @@
 package com.lv.controller;
 
 import com.lv.model.User;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.lv.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -13,11 +11,19 @@ import org.springframework.web.servlet.ModelAndView;
  * on 2018/07/1920:29
  */
 @RestController
+@RequestMapping("/hello")
 public class HelloController {
 
-    @RequestMapping("/hello")
-    public String hello(){
-        return"index";
+    /*@Autowired
+    private User user;*/
+    @Autowired
+    private UserService userService;
+
+    //@RequestMapping(value = "/sayHello" ,method = RequestMethod.GET)
+    @GetMapping("/say")
+    public String hello(@RequestParam(value = "name",required = false,defaultValue = "lv") String myName){
+       // return user.getName();
+        return "my name is:" + myName;
     }
 
     @RequestMapping("/toLogin")
@@ -27,10 +33,10 @@ public class HelloController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@ModelAttribute User user) {
-        String name = user.getName();
-        String password = user.getPassWord();
+        String name = user.getUserName();
+        String password = user.getUserPassword();
 
-        if (name.equals("qinya") && password.equals("tianle")) {
+        if (name.equals("") && password.equals("tianle")) {
             return "Success";
         } else {
             return "Failed";

@@ -1,40 +1,47 @@
 package com.lv.model;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+
 /**
  * Created by simperLv
  * on 2018/08/06 17:13
  *
  * @Description //TODO
+ * @Component
+ * @ConfigurationProperties(prefix = "student")
  */
+@Service
+@Transactional
 public class User {
-    private String name;
-    private String passWord;
+    private Integer id;
+    private String userName;
+    private String userPassword;
 
-    public User(String name, String passWord){
-        this.name = name;
-        this.passWord = passWord;
-    }
-    public String getName() {
-        return name;
+    public Integer getId() {
+        return id;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", passWord='" + passWord + '\'' +
-                '}';
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 }
