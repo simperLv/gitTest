@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -24,7 +25,7 @@ public class StreamTest {
 
         Predicate<Person> pred = (p) -> p.getAge() > 22;
         displayPeople(people,pred);
-
+        System.out.println(people.stream().mapToInt(p -> p.getAge()).sum());
         Person[] students = {
                 new Person("小吕",22),
                 new Person("狗",23),
@@ -32,6 +33,7 @@ public class StreamTest {
         //Stream<Person> stream = Stream.of(students);
         Stream<Person> stream = Arrays.stream(students);
         stream.forEach(s -> System.out.println(s.getInfo()));
+        IntStream.range(1,4).forEach(System.out::println);
     }
     public static void displayPeople(List<Person> people,Predicate<Person> pred){
         System.out.print("selected:");

@@ -10,5 +10,5 @@ import com.lv.model.User;
  */
 public interface UserService {
     int addUser(User user);
-    int login(User user);
+    User findUser(User user);
 }

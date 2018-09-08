@@ -28,8 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int login(User user) {
-
-        return 0;
+    public User findUser(User user) {
+        return userDao.findUser(user);
     }
 }

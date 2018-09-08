@@ -23,9 +23,9 @@ public class BootApplicationTests {
     @Test
     @Rollback
     public void contextLoads() {
-        user.setUserName("bootUser");
-        user.setUserPassword("1234");
-        userService.addUser(user);
+            user.setUserPassword("123456");
+            //user.setUserName("user");
+        System.out.println("=========>"+userService.findUser(user).toString());
     }
 
 }

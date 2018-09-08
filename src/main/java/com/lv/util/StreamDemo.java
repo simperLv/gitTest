@@ -21,7 +21,14 @@ public class StreamDemo {
                })
                .filter(p -> !"".equals(p.name) && !"".equals(p.ceo) && 0 != p.capital)
                .sorted(Comparator.comparing(Company :: getCapital))
-               .forEach(p-> System.out.println(p.getName() + p.getCeo() + p.getCapital()));
+               .forEach(System.out :: println);
+       /* String[] strs=str.split("\r\n");
+        List <Company> companyList = new ArrayList<Company>();
+        Arrays.stream(strs).forEach( e -> {
+            Company com = new Company(e.split(",")[0],e.split(",")[1],e.split(",")[2]);
+            companyList.add();} );
+        companyList.stream().filter(c->c.ceo!=""-> System.out.println(Company));
+*/
     }
     static class Company{
         String name,ceo;
@@ -55,6 +62,15 @@ public class StreamDemo {
 
         public void setCapital(int capital) {
             this.capital = capital;
+        }
+
+        @Override
+        public String toString() {
+            return "Company{" +
+                    "name='" + name + '\'' +
+                    ", ceo='" + ceo + '\'' +
+                    ", capital=" + capital +
+                    '}';
         }
     }
 }
