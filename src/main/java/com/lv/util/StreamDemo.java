@@ -1,6 +1,7 @@
 package com.lv.util;
 
 import java.util.*;
+
 /**
  * Created by simperLv
  * on 2018/08/19 16:09
@@ -9,37 +10,35 @@ import java.util.*;
  */
 public class StreamDemo {
     static String raw = "百度,李彦宏,100\r\n腾讯,马化腾,300\r\n小公司,,30";
-    public static void main(String[] args){
-       Arrays.asList(raw.split("\r\n")).stream()
-               .map(p -> {
-                   String[] filed = p.split(",");
-                   if (filed.length ==  3){
-                       Company company = new Company(filed[0],filed[1],Integer.parseInt(filed[2]));
-                       return company;
-                   }
-                   return new Company();
-               })
-               .filter(p -> !"".equals(p.name) && !"".equals(p.ceo) && 0 != p.capital)
-               .sorted(Comparator.comparing(Company :: getCapital))
-               .forEach(System.out :: println);
-       /* String[] strs=str.split("\r\n");
-        List <Company> companyList = new ArrayList<Company>();
-        Arrays.stream(strs).forEach( e -> {
-            Company com = new Company(e.split(",")[0],e.split(",")[1],e.split(",")[2]);
-            companyList.add();} );
-        companyList.stream().filter(c->c.ceo!=""-> System.out.println(Company));
-*/
+
+    public static void main(String[] args) {
+        Arrays.asList(raw.split("\r\n")).stream()
+                .map(p -> {
+                    String[] filed = p.split(",");
+                    if (filed.length == 3) {
+                        Company company = new Company(filed[0], filed[1], Integer.parseInt(filed[2]));
+                        return company;
+                    }
+                    return new Company();
+                })
+                .filter(p -> !"".equals(p.name) && !"".equals(p.ceo) && 0 != p.capital)
+                .sorted(Comparator.comparing(Company::getCapital))
+                .forEach(System.out::println);
     }
-    static class Company{
-        String name,ceo;
+
+    static class Company {
+        String name, ceo;
         int capital;
-        public Company(){
+
+        public Company() {
         }
-        public Company(String name,String ceo,int capital){
+
+        public Company(String name, String ceo, int capital) {
             this.name = name;
             this.ceo = ceo;
             this.capital = capital;
         }
+
         public String getName() {
             return name;
         }

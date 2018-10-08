@@ -5,7 +5,10 @@ import com.lv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by simperLv
@@ -28,5 +31,11 @@ public class UserController {
     @PostMapping("/login")
     public String login(String name,String passWord){
        return "";
+    }
+
+    @RequestMapping(value = "list", method = RequestMethod.GET)
+    public List<User> list(){
+        User user = null;
+        return userService.findUser(user);
     }
 }

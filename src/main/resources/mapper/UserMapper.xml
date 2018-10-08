@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lv.dao.UserDao" >
+<mapper namespace="com.lv.dao.UserDao">
     <insert id="addUser" parameterType="com.lv.model.User">
         INSERT INTO user
         (
-          userName
-          ,userPassword
-          )
-          values(
-            #{userName, jdbcType=VARCHAR}
-            ,#{userPassword, jdbcType=VARCHAR})
+        userName
+        ,userPassword
+        )
+        values(
+        #{userName, jdbcType=VARCHAR}
+        ,#{userPassword, jdbcType=VARCHAR})
     </insert>
     <select id="findUser" parameterType="com.lv.model.User" resultType="com.lv.model.User">
         select id,userName,userPassword from user
         where 1=1
         <if test='userName!=null and userName!="" '>
-           and userName = #{userName}
+            and userName = #{userName}
         </if>
         <if test='userPassword!=null and userPassword!="" '>
-           and userPassword = #{userPassword}
+            and userPassword = #{userPassword}
         </if>
     </select>
 </mapper>
