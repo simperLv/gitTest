@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
     public List<User> findUser(User user) {
         return userDao.findUser(user);
     }
+
+    @Override
+    public User findOne(User user) {
+        return userDao.findOne(user);
+    }
 }

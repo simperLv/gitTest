@@ -15,4 +15,5 @@ import java.util.List;
 public interface UserDao {
     int addUser(User user);
     List<User> findUser(User user);
+    User findOne(User user);
 }

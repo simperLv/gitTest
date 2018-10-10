@@ -21,4 +21,9 @@
             and userPassword = #{userPassword}
         </if>
     </select>
+    <select id="findOne" parameterType="com.lv.model.User" resultType="com.lv.model.User">
+        select id,userName,userPassword
+          from user
+          where userName =  #{userName} and userPassword = #{userPassword}
+    </select>
 </mapper>
