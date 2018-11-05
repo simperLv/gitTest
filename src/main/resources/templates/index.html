@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ok</title>
+    <title>文件上传</title>
 </head>
 <body>
-login is false
+<form action="/upload" method="post" enctype=multipart/form-data>
+    <input type="file" name="file"/>
+    <input type="submit" name="提交"/>
+</form>
 </body>
 </html>

@@ -31,7 +31,7 @@ public class HelloController {
         return new ModelAndView("login");
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@ModelAttribute User user) {
         String name = user.getUserName();
         String password = user.getUserPassword();
@@ -41,6 +41,5 @@ public class HelloController {
         } else {
             return "Failed";
         }
-    }
-
+    }*/
 }

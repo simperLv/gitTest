@@ -15,8 +15,8 @@ public class MailTest {
     public static void main(String[] args) throws Exception
     {
         new MailSender()
-                .title("测试SpringBoot发送邮件")
-                .content("简单文本内容发送")
+                .title("javamail")
+                .content("今天天气真好")
                 .contentType(MailContentTypeEnum.TEXT)
                 .targets(new ArrayList<String>(){{
                     add("593324988@qq.com");

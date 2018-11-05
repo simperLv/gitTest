@@ -31,7 +31,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(User user, HttpServletRequest request){
+    public ModelAndView login(User user, HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
        //登录成功
         boolean flag = true;
         String result = "登录成功";
@@ -46,7 +47,9 @@ public class UserController {
             //将用户存入session
             request.getSession().setAttribute("sessionUser",user);
         }
-        return result;
+        modelAndView.addObject("result",result);
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
