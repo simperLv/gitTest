@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 /**
  * Created by simperLv
@@ -18,8 +20,14 @@ import javax.transaction.Transactional;
 @Transactional
 public class User {
     private Integer id;
+
+    @NotBlank
     private String userName;
+
     private String userPassword;
+
+    @Email
+    private String email;
 
     public Integer getId() {
         return id;
@@ -45,12 +53,21 @@ public class User {
         this.userPassword = userPassword;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", userPassword='" + userPassword + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

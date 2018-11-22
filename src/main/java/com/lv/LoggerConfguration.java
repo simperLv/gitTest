@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * Created by simperLv
  * on 2018/10/24 14:18
  *
- * @Description //TODO
+ * @Description 使用拦截器记录你的SpringBoot的请求日志
  */
 @Configuration
 public class LoggerConfguration implements WebMvcConfigurer {

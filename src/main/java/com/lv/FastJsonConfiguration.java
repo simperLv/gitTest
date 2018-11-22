@@ -12,10 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *
  * Created by simperLv
  * on 2018/10/08 14:37
  *
- * @Description //TODO
+ * @Description FastJsonConfiguration用来做快速操作Json的序列化与反序列化的组件
  */
 @Configuration
 public class FastJsonConfiguration implements WebMvcConfigurer {

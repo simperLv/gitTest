@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import javax.xml.ws.WebServiceException;
 
 /**
+ *  使用拦截器
  * Created by simperLv
  * on 2018/10/09 11:19
  *

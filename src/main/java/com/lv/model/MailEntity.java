@@ -9,7 +9,7 @@ import java.util.List;
  * Created by simperLv
  * on 2018/10/09 16:38
  *
- * @Description //TODO
+ * @Description 邮件实体
  */
 public class MailEntity implements Serializable {
     //此处填写SMTP服务器

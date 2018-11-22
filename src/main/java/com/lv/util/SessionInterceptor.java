@@ -20,7 +20,7 @@ public class SessionInterceptor implements HandlerInterceptor {
         if (request.getRequestURI().equals("/hello/toLogin") || request.getRequestURI().equals("/user/login")){
             return true;
         }
-        Object obj = request.getAttribute("sessionUser");
+        Object obj = request.getSession().getAttribute("sessionUser");
         if (obj == null){
             response.sendRedirect("/hello/toLogin");
             return false;

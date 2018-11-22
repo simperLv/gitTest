@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
  * Created by simperLv
  * on 2018/10/09 17:05
  *
- * @Description //TODO
+ * @Description 用于读取*.yml配置文件的工具类
  */
 public class PropertiesUtil {
     private final ResourceBundle resource;

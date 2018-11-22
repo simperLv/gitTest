@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>文件上传</title>
 </head>
 <body>
-<form action="/upload" method="post" enctype=multipart/form-data>
+单位件上传：
+<form th:action="@{/file/upload}" method="post" enctype=multipart/form-data>
+    <input type="file" name="file"/>
+    <input type="file" name="file"/>
     <input type="file" name="file"/>
     <input type="submit" name="提交"/>
-</form>
+</form>p
 </body>
 </html>

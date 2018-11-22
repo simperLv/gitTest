@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by simperLv
  * on 2018/10/13 11:02
  *
- * @Description //TODO
+ * @Description /使用拦截器记录你的SpringBoot的请求日志
  */
 public class LoggerInterceptor implements HandlerInterceptor {
     //请求开始时间标识

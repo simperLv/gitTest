@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  * Created by simperLv
  * on 2018/10/13 10:21
  *
- * @Description //TODO
+ * @Description 日志实体
  */
 @Entity
 @Table(name="logger_infos")
